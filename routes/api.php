@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::resource('jobs', 'JobController');
+
+Route::get('jobs/list', 'JobController@index');
+Route::get('jobs/get/{id}', 'JobController@show');
+
+Route::post('jobs/create', 'JobController@create');
+
+Route::post('jobs/take/{processor}', 'JobController@take');
+Route::post('jobs/close/{id}', 'JobController@close');
